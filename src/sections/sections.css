@@ -1,0 +1,494 @@
+/* ============================================================
+   SECTION-SPECIFIC STYLES (Demo, Flow, Product, Model,
+   Compliance, Roadmap, SWOT, Final).
+   ============================================================ */
+
+/* ----------------------------- Demo ----------------------------- */
+/* Die Produktdemo lebt jetzt vollständig in src/sections/demo/ (PhoneApp
+   + phoneApp.css). Die früheren .demo-phone/.demo-live-Stile sind dorthin
+   abgelöst worden. */
+
+/* ----------------------------- Flow ----------------------------- */
+.flow {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: var(--s-3);
+}
+.flow-card {
+  padding: var(--s-4);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+  transition: border-color var(--d-base) var(--ease-out), transform var(--d-base) var(--ease-out);
+}
+@media (hover: hover) and (pointer: fine) {
+  .flow-card:hover {
+    border-color: var(--border-accent);
+    transform: translateY(-2px);
+  }
+}
+.flow-card b {
+  color: var(--accent);
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+.flow-card h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin: var(--s-2) 0 var(--s-1);
+  letter-spacing: -0.01em;
+}
+.flow-card p {
+  color: var(--text-muted);
+  font-size: var(--t-tiny);
+}
+@media (max-width: 980px) {
+  .flow {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 560px) {
+  .flow {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ----------------------------- Product target panel ----------------------------- */
+.target-panel {
+  margin-top: var(--s-4);
+  padding: var(--s-5);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: var(--surface-sunken);
+  min-height: 150px;
+}
+.target-panel h4 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: var(--s-2);
+}
+.target-panel p {
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: var(--s-4);
+}
+.mvp-grid,
+.team-grid {
+  margin-top: var(--s-4);
+}
+
+/* ----------------------------- Model ----------------------------- */
+.model-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 300px) 1fr;
+  gap: var(--s-4);
+  align-items: start;
+}
+.revenue-feature {
+  min-height: 220px;
+}
+.revenue-feature__value {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 1.4rem + 2vw, 2.6rem);
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: -0.02em;
+  margin: var(--s-2) 0 var(--s-3);
+}
+@media (max-width: 860px) {
+  .model-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ----------------------------- Compliance layers ----------------------------- */
+.layer-card {
+  position: relative;
+  padding: var(--s-5);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: border-color var(--d-base) var(--ease-out), transform var(--d-base) var(--ease-out);
+}
+.layer-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--accent);
+  opacity: 0.7;
+}
+@media (hover: hover) and (pointer: fine) {
+  .layer-card:hover {
+    border-color: var(--border-accent);
+    transform: translateY(-2px);
+  }
+}
+.layer-card__index {
+  font-family: var(--font-display);
+  font-size: var(--t-tiny);
+  font-weight: 600;
+  color: var(--text-subtle);
+  letter-spacing: 0.1em;
+}
+.layer-card h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin: var(--s-2) 0;
+  letter-spacing: -0.01em;
+}
+.layer-card p {
+  color: var(--text-muted);
+  font-size: var(--t-small);
+  line-height: 1.55;
+}
+
+/* ----------------------------- Checklist ----------------------------- */
+.checklist {
+  list-style: none;
+  padding: 0;
+  margin: var(--s-4) 0 0;
+  display: grid;
+  gap: var(--s-2);
+}
+.checklist li {
+  position: relative;
+  padding: var(--s-3) var(--s-3) var(--s-3) var(--s-6);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  background: var(--surface-sunken);
+  color: var(--text);
+  font-size: var(--t-small);
+}
+.checklist li::before {
+  content: '';
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  width: 14px;
+  height: 14px;
+  margin-top: -7px;
+  border-radius: 4px;
+  background: var(--accent-weak);
+  border: 1px solid var(--border-accent);
+}
+.checklist li::after {
+  content: '';
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  width: 4px;
+  height: 7px;
+  margin-top: -5px;
+  border: solid var(--accent);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+.checklist--lg li {
+  padding: var(--s-4) var(--s-4) var(--s-4) var(--s-6);
+  font-size: var(--t-body);
+}
+
+/* ----------------------------- Roadmap ----------------------------- */
+.road {
+  display: grid;
+  grid-template-columns: minmax(0, 340px) 1fr;
+  gap: var(--s-5);
+  align-items: start;
+}
+.road-rail {
+  display: grid;
+  gap: 0;
+  position: relative;
+}
+.road-step {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto auto;
+  column-gap: var(--s-4);
+  padding: var(--s-3) var(--s-3) var(--s-5);
+  text-align: left;
+  border-radius: var(--r-sm);
+  transition: background-color var(--d-base) var(--ease-out);
+}
+.road-step::before {
+  content: '';
+  position: absolute;
+  left: 12px;
+  top: 26px;
+  bottom: -2px;
+  width: 2px;
+  background: var(--border);
+}
+.road-step:last-child::before {
+  display: none;
+}
+.road-step__dot {
+  grid-row: 1 / span 2;
+  width: 14px;
+  height: 14px;
+  margin-top: 5px;
+  border-radius: 50%;
+  border: 2px solid var(--border-strong);
+  background: var(--surface);
+  z-index: 1;
+  transition: border-color var(--d-base) var(--ease-out), background-color var(--d-base) var(--ease-out),
+    box-shadow var(--d-base) var(--ease-out);
+}
+.road-step__phase {
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--text-subtle);
+  font-size: var(--t-small);
+}
+.road-step__title {
+  font-weight: 700;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  transition: color var(--d-base) var(--ease-out);
+}
+@media (hover: hover) and (pointer: fine) {
+  .road-step:hover {
+    background: var(--surface-sunken);
+  }
+}
+.road-step[data-active='true'] .road-step__dot {
+  border-color: var(--accent);
+  background: var(--accent);
+  box-shadow: 0 0 0 4px var(--accent-weak);
+}
+.road-step[data-active='true'] .road-step__phase {
+  color: var(--accent);
+}
+.road-step[data-active='true'] .road-step__title {
+  color: var(--text);
+}
+.road-detail {
+  min-height: 260px;
+}
+@media (max-width: 860px) {
+  .road {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ----------------------------- SWOT ----------------------------- */
+.swot-wrap {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: var(--s-4);
+  align-items: start;
+}
+.swot-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--s-3);
+}
+.swot-cell {
+  text-align: left;
+  padding: var(--s-5);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+  min-height: 190px;
+  transition: border-color var(--d-base) var(--ease-out), transform var(--d-base) var(--ease-out),
+    box-shadow var(--d-base) var(--ease-out);
+}
+.swot-cell h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: var(--s-3);
+  letter-spacing: -0.01em;
+}
+.swot-cell[data-key='Strengths'] h3,
+.swot-cell[data-key='Opportunities'] h3 {
+  color: var(--pos);
+}
+.swot-cell[data-key='Weaknesses'] h3,
+.swot-cell[data-key='Threats'] h3 {
+  color: var(--neg);
+}
+.swot-cell ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: var(--s-2);
+  color: var(--text-muted);
+  font-size: var(--t-small);
+}
+.swot-cell ul li {
+  padding-left: var(--s-4);
+  position: relative;
+}
+.swot-cell ul li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.4;
+}
+@media (hover: hover) and (pointer: fine) {
+  .swot-cell:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+}
+.swot-cell[data-active='true'] {
+  border-color: var(--border-accent);
+  box-shadow: 0 0 0 1px var(--accent-weak), var(--shadow-md);
+}
+.swot-detail {
+  min-height: 200px;
+  position: sticky;
+  top: calc(var(--nav-h) + var(--s-4));
+}
+@media (max-width: 860px) {
+  .swot-wrap {
+    grid-template-columns: 1fr;
+  }
+  .swot-detail {
+    position: static;
+  }
+}
+@media (max-width: 520px) {
+  .swot-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ----------------------------- Final ----------------------------- */
+.final {
+  padding-bottom: clamp(6rem, 4rem + 6vw, 10rem);
+}
+.final-card {
+  text-align: center;
+  max-width: 60rem;
+  margin-inline: auto;
+  padding: clamp(2rem, 1rem + 4vw, 4rem);
+  border: 1px solid var(--border);
+  border-radius: var(--r-xl);
+  background: var(--surface);
+  box-shadow: var(--shadow-lg);
+}
+.final-card .eyebrow {
+  justify-content: center;
+}
+.final-card h2 {
+  font-size: var(--t-h2);
+  margin: var(--s-4) 0;
+  text-wrap: balance;
+}
+.final-card p:not(.eyebrow) {
+  font-size: var(--t-lead);
+  color: var(--text-muted);
+  max-width: 48rem;
+  margin-inline: auto;
+  line-height: 1.6;
+}
+
+/* ----------------------------- Org-Chart (Organisation) ----------------------------- */
+.org-chart {
+  margin-top: var(--s-4);
+  display: grid;
+  gap: var(--s-6);
+  justify-items: center;
+}
+.org-chart__level {
+  display: grid;
+  gap: var(--s-3);
+  width: 100%;
+  position: relative;
+}
+.org-chart__level--top {
+  justify-items: center;
+}
+.org-chart__level--mgmt {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  max-width: 640px;
+  margin-inline: auto;
+}
+.org-chart__level--teams {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+/* Dezenter vertikaler Connector zwischen den Ebenen. */
+.org-chart__level:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: calc(var(--s-6) * -1);
+  width: 2px;
+  height: var(--s-6);
+  background: var(--border-strong);
+  transform: translateX(-50%);
+}
+
+.org-node {
+  padding: var(--s-4);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+  transition: border-color var(--d-base) var(--ease-out), transform var(--d-base) var(--ease-out);
+}
+@media (hover: hover) and (pointer: fine) {
+  .org-node:hover {
+    border-color: var(--border-accent);
+    transform: translateY(-2px);
+  }
+}
+.org-node strong {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+.org-node span {
+  display: block;
+  margin-top: var(--s-1);
+  color: var(--text-muted);
+  font-size: var(--t-tiny);
+  line-height: 1.5;
+}
+.org-node--gov {
+  background: var(--surface-sunken);
+  max-width: 360px;
+}
+.org-node--mgmt {
+  border-color: var(--border-accent);
+}
+.org-node--mgmt strong {
+  color: var(--accent);
+}
+
+@media (max-width: 860px) {
+  .org-chart__level--teams {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 520px) {
+  .org-chart__level--mgmt,
+  .org-chart__level--teams {
+    grid-template-columns: 1fr;
+  }
+  /* Auf sehr schmalen Screens den Connector ausblenden — die gestapelte
+     Reihenfolge kommuniziert die Hierarchie bereits. */
+  .org-chart__level::after {
+    display: none;
+  }
+}

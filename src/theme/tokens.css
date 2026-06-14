@@ -1,0 +1,151 @@
+/* ============================================================
+   NestEgg · Design Tokens
+   One coherent system, two themes. Light is the default.
+   Only semantic tokens are consumed by components — never raw
+   hex values — so the dark theme is a single override block.
+   ============================================================ */
+
+:root {
+  /* Type families */
+  --font-display: 'Fraunces', ui-serif, Georgia, 'Times New Roman', serif;
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  /* Fluid type scale (clamp: min, preferred, max) */
+  --t-display: clamp(2.9rem, 1.2rem + 6.4vw, 6.4rem);
+  --t-h2: clamp(2.1rem, 1.1rem + 3.4vw, 3.9rem);
+  --t-h3: clamp(1.25rem, 1rem + 0.9vw, 1.6rem);
+  --t-lead: clamp(1.06rem, 0.96rem + 0.5vw, 1.32rem);
+  --t-body: 1rem;
+  --t-small: 0.875rem;
+  --t-tiny: 0.75rem;
+
+  /* Spacing scale (8px base, a few half-steps) */
+  --s-1: 0.25rem;
+  --s-2: 0.5rem;
+  --s-3: 0.75rem;
+  --s-4: 1rem;
+  --s-5: 1.5rem;
+  --s-6: 2rem;
+  --s-7: 3rem;
+  --s-8: 4rem;
+  --s-9: 6rem;
+  --s-10: 8rem;
+
+  /* Radius */
+  --r-xs: 8px;
+  --r-sm: 12px;
+  --r-md: 16px;
+  --r-lg: 22px;
+  --r-xl: 30px;
+  --r-pill: 999px;
+
+  /* Layout */
+  --container: min(1180px, calc(100vw - 48px));
+  --container-wide: min(1340px, calc(100vw - 48px));
+  --nav-h: 68px;
+
+  /* Easing — Emil's stronger curves, never the weak CSS defaults */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+  --ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Durations */
+  --d-fast: 140ms;
+  --d-base: 200ms;
+  --d-slow: 280ms;
+
+  /* ---- Data-viz palette (theme-aware, consistent semantic roles) ---- */
+  --viz-1: var(--accent); /* B2C / primary series */
+  --viz-2: #e0a32e; /* B2B / amber */
+  --viz-3: #4a9fe0; /* Partner / blue */
+  --viz-4: #b06bd6; /* Setup / violet */
+}
+
+/* ============================ LIGHT (default) ============================ */
+:root,
+:root[data-theme='light'] {
+  color-scheme: light;
+
+  --bg: #faf9f5;
+  --bg-gradient: radial-gradient(circle at 18% -8%, rgba(13, 115, 85, 0.07), transparent 36%),
+    radial-gradient(circle at 92% 4%, rgba(224, 163, 46, 0.06), transparent 32%), #faf9f5;
+
+  --tint: rgba(13, 115, 85, 0.035);
+  --surface: #ffffff;
+  --surface-2: #f3f2ec;
+  --surface-sunken: #f7f6f1;
+
+  --text: #14191d;
+  --text-muted: #4a5a68; /* 7.1:1 on white — AAA for secondary text */
+  --text-subtle: #717b85;
+  --text-on-accent: #ffffff;
+
+  --border: rgba(20, 26, 31, 0.1);
+  --border-strong: rgba(20, 26, 31, 0.17);
+  --border-accent: rgba(13, 115, 85, 0.34);
+
+  --accent: #0d7355;
+  --accent-strong: #0a5b43;
+  --accent-weak: rgba(13, 115, 85, 0.1);
+  --accent-glow: rgba(13, 115, 85, 0.16);
+
+  --pos: #0d7355;
+  --neg: #c63d4e;
+  --neg-weak: rgba(198, 61, 78, 0.1);
+
+  --shadow-sm: 0 1px 2px rgba(18, 28, 24, 0.05), 0 2px 8px rgba(18, 28, 24, 0.04);
+  --shadow-md: 0 4px 12px rgba(18, 28, 24, 0.06), 0 12px 32px rgba(18, 28, 24, 0.07);
+  --shadow-lg: 0 8px 24px rgba(18, 28, 24, 0.08), 0 28px 70px rgba(18, 28, 24, 0.12);
+
+  --nav-bg: rgba(250, 249, 245, 0.78);
+  --overlay-bg: rgba(28, 32, 30, 0.32);
+  --backdrop: blur(8px);
+}
+
+/* ============================ DARK ============================ */
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  --bg: #08090c;
+  --bg-gradient: radial-gradient(circle at 18% -6%, rgba(52, 217, 156, 0.1), transparent 34%),
+    radial-gradient(circle at 90% 6%, rgba(224, 163, 46, 0.05), transparent 30%),
+    linear-gradient(180deg, #06070a, #0b0e13 50%, #08090c);
+
+  --tint: rgba(52, 217, 156, 0.045);
+  --surface: rgba(20, 26, 32, 0.72);
+  --surface-2: rgba(26, 34, 41, 0.78);
+  --surface-sunken: rgba(8, 12, 16, 0.5);
+
+  --text: #f3f7f8;
+  --text-muted: #a6b1bb; /* lifted for AAA on dark surface */
+  --text-subtle: #79858f;
+  --text-on-accent: #04140d;
+
+  --border: rgba(255, 255, 255, 0.1);
+  --border-strong: rgba(255, 255, 255, 0.17);
+  --border-accent: rgba(52, 217, 156, 0.4);
+
+  --accent: #34d99c;
+  --accent-strong: #54e6b0;
+  --accent-weak: rgba(52, 217, 156, 0.12);
+  --accent-glow: rgba(52, 217, 156, 0.22);
+
+  --pos: #34d99c;
+  --neg: #ff7b8a;
+  --neg-weak: rgba(255, 123, 138, 0.13);
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 8px 28px rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 24px 70px rgba(0, 0, 0, 0.55);
+
+  --nav-bg: rgba(8, 10, 13, 0.74);
+  --overlay-bg: rgba(2, 4, 6, 0.62);
+  /* 10px instead of 16px: a much cheaper blur convolution to re-run each
+     scroll frame under the sticky nav, with a near-identical frosted look. */
+  --backdrop: blur(10px);
+
+  --viz-2: #f0c060;
+  --viz-3: #7cc4ff;
+  --viz-4: #cf9bf0;
+}
