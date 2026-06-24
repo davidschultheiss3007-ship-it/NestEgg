@@ -1,36 +1,50 @@
 <!doctype html>
 <html lang="de">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <meta name="theme-color" content="#fafaf7" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#08090c" media="(prefers-color-scheme: dark)" />
-    <title>NestEgg · Sparcoach</title>
-    <meta
-      name="description"
-      content="NestEgg als interaktive Uni-Präsentation: Finanzsimulator, Roadmap, SWOT, Compliance und Präsentationsmodus für einen digitalen Sparcoach."
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <script>
-      // Set the theme before paint to avoid a flash of the wrong theme.
-      (function () {
-        try {
-          var stored = localStorage.getItem('nestegg-theme');
-          var system = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-          document.documentElement.dataset.theme = stored || system;
-        } catch (e) {
-          document.documentElement.dataset.theme = 'light';
-        }
-      })();
-    </script>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NestEgg 2.0 · KI-Sparcoach</title>
+  <meta name="description" content="NestEgg Businessplan als interaktive Premium-FinTech-Demo mit Finanzsimulator, Roadmap, SWOT und Präsentationsmodus." />
+  <link rel="stylesheet" href="styles.css?v=nestegg-2-final" />
+</head>
+<body class="is-locked">
+  <section id="cover" class="cover" aria-label="Startseite">
+    <div class="cover-grid"></div><div class="cover-orb orb-a"></div><div class="cover-orb orb-b"></div><div class="cover-orb orb-c"></div>
+    <header class="cover-top"><a class="logo" href="#"><span></span>NestEgg 2.0</a><button class="btn btn-primary" data-enter="demo">Demo starten</button></header>
+    <main class="cover-main">
+      <div class="cover-copy">
+        <p class="tag">Premium-FinTech · Coach-first · Partner-later</p>
+        <h1>Finanzroutinen statt Finanzstress.</h1>
+        <p class="lead">Ein KI-Sparcoach für junge Menschen: Start im Alltag, Analyse über Open Banking, Sparimpulse mit Bestätigung und spätere Investments ausschließlich über regulierte Partner.</p>
+        <div class="cover-actions"><button class="btn btn-primary big" data-enter="demo">Demo starten</button><button class="btn btn-ghost big" data-enter="summary">Businessplan ansehen</button></div>
+        <div class="cover-proof"><span>950.000 € Kapitalbedarf</span><span>Break-even Jahr 4/5</span><span>7,4 Mio. € Umsatz J5</span></div>
+      </div>
+      <div class="cover-stage" aria-hidden="true">
+        <div class="egg-core"><i></i><b></b></div>
+        <div class="phone hero-phone"><div class="phone-head"><b>NestEgg</b><small>Routine aktiv</small></div><div class="msg bot">Du hast diese Woche 18 € weniger für Lieferdienste ausgegeben. 6 € für dein Notgroschen-Ziel vormerken?</div><div class="msg user">Ja, aber erst bestätigen.</div><div class="msg bot">Sicherer Web-Flow geöffnet. Du entscheidest.</div><div class="phone-input">Antwort schreiben ... <span>➜</span></div></div>
+        <div class="dash hero-dash"><p>Notgroschen</p><strong>185 €</strong><em>19 % erreicht</em><div class="bar"><span style="width:19%"></span></div><div class="spark"><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+        <div class="float-card fc1"><b>+23 €</b><span>Sparfenster</span></div><div class="float-card fc2"><b>82 %</b><span>Routine Score</span></div><div class="float-card fc3"><b>Partner</b><span>Investment Layer</span></div>
+      </div>
+    </main>
+  </section>
+
+  <header id="nav" class="nav"><a class="logo small" href="#demo"><span></span>NestEgg</a><nav><a href="#demo">Demo</a><a href="#summary">Summary</a><a href="#product">Produkt</a><a href="#market">Markt</a><a href="#model">Modell</a><a href="#finance">Finanzen</a><a href="#roadmap">Roadmap</a><a href="#slides">Slides</a></nav><button class="btn btn-ghost tiny" data-open-slides>Präsentation</button></header>
+
+  <main id="app" class="app" aria-hidden="true">
+    <section id="demo" class="section hero-app" data-section><div class="head"><p class="tag">01 · Produktdemo</p><h2>Der erste Mehrwert entsteht in einem Chat-Moment.</h2><p>NestEgg baut keine direkte Investment-App im MVP. Der MVP macht Sparziele, Ausgabenmuster und konkrete Routinen sichtbar.</p></div><div class="demo-layout"><div class="phone demo-phone"><div class="phone-head"><b>NestEgg Coach</b><small id="demoState">Routine-Check</small></div><div id="chat" class="chat"></div><div id="choices" class="choices"></div><button class="btn btn-primary full" id="nextDemo">Weiter</button></div><aside class="demo-live"><div class="dash xl"><p>Live-Ziel</p><strong id="saved">185 €</strong><em id="savedLabel">19 % von 1.000 €</em><div class="bar"><span id="savedBar" style="width:19%"></span></div></div><div class="mini-kpis"><article><span>Woche</span><b>+23 €</b></article><article><span>Streak</span><b id="streak">12 Tage</b></article><article><span>Score</span><b id="score">82 %</b></article></div></aside></div></section>
+    <section id="summary" class="section" data-section><div class="head"><p class="tag">02 · Executive Summary</p><h2>Coach-first statt riskanter WhatsApp-Robo-Advisor.</h2><p>NestEgg ist ein FinTech-Frontend mit Behavioral-Finance-Fokus. Investments werden nicht eigenständig erbracht, sondern später über regulierte Partner angebunden.</p></div><div id="kpis" class="kpi-grid"></div><div class="split"><article class="panel"><h3>Businessplan-Kern</h3><p>NestEgg verwandelt alltägliche Finanzdaten in kleine Sparentscheidungen. Nutzer behalten Kontrolle; Open Banking ist optional; Investmentprozesse laufen getrennt über Partner.</p></article><article class="panel"><h3>Warum prüfungsstark?</h3><p>Die Idee verbindet Kundennutzen, Marktpotenzial, Machbarkeit, Regulatorik, Finanzierung, Personalplanung, Risiken und Präsentierbarkeit.</p></article></div></section>
+    <section id="problem" class="section tint" data-section><div class="head"><p class="tag">03 · Problem</p><h2>Das Problem ist Verhalten, nicht Information.</h2><p>Junge Menschen wissen oft, dass sie sparen sollten. Die Umsetzung scheitert an Aufschub, Impulskäufen, geringer Routine und komplizierten Finanzprodukten.</p></div><div id="problems" class="card-grid"></div></section>
+    <section id="product" class="section" data-section><div class="head"><p class="tag">04 · Produkt</p><h2>Aus Daten werden konkrete nächste Schritte.</h2><p>Der Produktpfad ist bewusst phasenweise: Ziel, Analyse, Impuls, Bestätigung, Fortschritt, Partner-Investment.</p></div><div id="flow" class="flow"></div><div class="split"><div class="panel"><div class="panel-top"><h3>Zielgruppen</h3><span>Tabs</span></div><div id="targetTabs" class="tabs"></div><div id="targetPanel" class="tabout"></div></div><div class="panel"><h3>MVP-Funktionen</h3><div id="mvp" class="mini-grid"></div></div></div></section>
+    <section id="market" class="section tint" data-section><div class="head"><p class="tag">05 · Markt & Wettbewerb</p><h2>Ein Markt, in dem vier Trends zusammenlaufen.</h2><p>Junge Zielgruppe, Messenger-Nutzung, ETF-Sparpläne, Open Banking und KI-Interfaces schaffen ein plausibles Marktfenster.</p></div><div id="marketCards" class="card-grid four"></div><div class="table-wrap"><table id="competition"></table></div></section>
+    <section id="model" class="section" data-section><div class="head"><p class="tag">06 · Geschäftsmodell</p><h2>Nicht nur AuM. Mehrkanal-Umsatz als Stabilitätsanker.</h2><p>Premium, B2B2C, Partner-Revenue, White-Label und langfristiger AuM-Share machen das Modell robuster.</p></div><div class="model-layout"><div id="revenueTabs" class="tabs vertical"></div><div id="revenuePanel" class="panel feature"></div></div><div class="split"><div class="panel"><h3>B2C Pricing</h3><div class="table-wrap"><table id="b2c"></table></div></div><div class="panel"><h3>B2B Pricing</h3><div class="table-wrap"><table id="b2b"></table></div></div></div></section>
+    <section id="compliance" class="section dark" data-section><div class="head"><p class="tag">07 · Compliance</p><h2>Finanzvertrauen entsteht durch klare Grenzen.</h2><p>Kein Depot, keine Order, keine individuelle Anlageberatung im MVP. Kritische Funktionen laufen über lizenzierte Partner.</p></div><div id="layers" class="card-grid four"></div></section>
+    <section id="finance" class="section" data-section><div class="head"><p class="tag">08 · Finanzplanung</p><h2>Kapitalbedarf 950.000 €. Break-even realistisch Jahr 4/5.</h2><p>Der Finanzplan bleibt bewusst konservativer als ein früher M18-Break-even und zeigt die Skalierung über B2B2C.</p></div><div id="financeKpis" class="kpi-grid"></div><div class="sim"><div><h3>Finanzplan-Simulator</h3><p>Teste Jahr-1-, Jahr-3- und Jahr-5-Logik. Der Simulator rechnet Premium, B2B, Partner- und Setup-Umsatz gegen Kosten.</p><div id="scenarios" class="choices"></div></div><div id="controls" class="controls"></div><div id="results" class="results"></div></div><div class="tables"><div class="panel"><h3>Kernannahmen</h3><div class="table-wrap"><table id="assumptions"></table></div></div><div class="panel"><h3>Umsatzplanung</h3><div class="table-wrap"><table id="revenues"></table></div></div><div class="panel"><h3>GuV</h3><div class="table-wrap"><table id="pnl"></table></div></div><div class="panel"><h3>Mittelverwendung</h3><div class="table-wrap"><table id="funding"></table></div></div></div></section>
+    <section id="roadmap" class="section dark" data-section><div class="head"><p class="tag">09 · Roadmap</p><h2>Validierung → MVP → Premium/B2B → Partner-Investment → DACH.</h2><p>Sechs Phasen über 60 Monate statt künstlicher Frühprofitabilität.</p></div><div class="road"><div id="roadBtns" class="roadBtns"></div><div id="roadPanel" class="panel roadPanel"></div></div></section>
+    <section id="swot" class="section tint" data-section><div class="head"><p class="tag">10 · SWOT & Risiken</p><h2>Risiken werden steuerbar gemacht.</h2><p>Klicke auf einen Quadranten, um die strategische Konsequenz zu sehen.</p></div><div class="swot-wrap"><div id="swotGrid" class="swot"></div><div id="swotText" class="panel"></div></div><div class="panel"><h3>Hauptrisiken</h3><div class="table-wrap"><table id="risks"></table></div></div></section>
+    <section id="team" class="section" data-section><div class="head"><p class="tag">11 · Organisation</p><h2>Schlankes Kernteam, Partner für Infrastruktur.</h2><p>Interne Kompetenz bleibt bei Produkt, Datenmodell, UX, KI-Coach-Qualität, Marke und Partnersteuerung.</p></div><div class="split"><div class="panel"><h3>Gründerteam</h3><div id="team" class="mini-grid"></div></div><div class="panel"><h3>Personalplanung</h3><div class="table-wrap"><table id="fte"></table></div></div></div></section>
+    <section id="slides" class="section slides" data-section><div class="head"><p class="tag">12 · Präsentationsmodus</p><h2>15-Minuten-Storyline.</h2><p>Nutze Pfeile oder Buttons, um durch die Businessplan-Story zu gehen.</p></div><div id="slideStage" class="slideStage"></div><div class="slideNav"><button class="btn btn-ghost" id="prevSlide">← Zurück</button><div id="dots" class="dots"></div><button class="btn btn-primary" id="nextSlide">Weiter →</button></div></section>
+    <section class="section final"><div class="final-card"><p class="tag">Schlussaussage</p><h2>NestEgg ist kein weiterer Broker. NestEgg ist der Einstieg davor.</h2><p>Genau diese Fokussierung macht aus der ursprünglichen Pitch-Idee ein realistisches, skalierbares und präsentationsfähiges KMU-Gründungskonzept.</p></div></section>
+  </main>
+  <script src="script.js?v=nestegg-2-final"></script>
+</body>
 </html>
