@@ -1,4 +1,12 @@
-import { markets, marketSize, competition, competitionWeighted } from '../data/businessPlan'
+import {
+  markets,
+  marketSize,
+  competition,
+  competitionWeighted,
+  competitionNamed,
+  competitionDefense,
+  validationPlan,
+} from '../data/businessPlan'
 import { SectionHead, InfoCard, Panel, DataTable } from '../components/Primitives'
 import { Reveal } from '../components/Reveal'
 
@@ -40,6 +48,31 @@ export function Market() {
           <Panel padLg style={{ marginTop: 'var(--s-5)' }} className="market-compare">
             <h3>Wettbewerbsvergleich</h3>
             <DataTable rows={competition} caption="Wettbewerbsvergleich" />
+          </Panel>
+        </Reveal>
+
+        <Reveal>
+          <Panel padLg style={{ marginTop: 'var(--s-5)' }}>
+            <h3>Abgrenzung zu konkreten Alternativen</h3>
+            <DataTable rows={competitionNamed} caption="Abgrenzung zu konkreten Wettbewerbern" />
+            <p style={{ marginTop: 'var(--s-3)', fontSize: '0.875rem', color: 'var(--text-muted)' }}>
+              {competitionDefense}
+            </p>
+          </Panel>
+        </Reveal>
+
+        <Reveal>
+          <Panel padLg style={{ marginTop: 'var(--s-5)' }}>
+            <p className="eyebrow">Validierungsplan — kein abgeschlossener Forschungsstand</p>
+            <h3>Validierungslogik</h3>
+            <div className="grid grid--4" style={{ marginTop: 'var(--s-3)' }}>
+              {validationPlan.map((item) => (
+                <div key={item.title}>
+                  <strong style={{ display: 'block', marginBottom: 'var(--s-1)' }}>{item.title}</strong>
+                  <p style={{ fontSize: '0.875rem' }}>{item.body}</p>
+                </div>
+              ))}
+            </div>
           </Panel>
         </Reveal>
       </div>

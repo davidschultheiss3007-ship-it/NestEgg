@@ -7,6 +7,9 @@ import {
   revenuesTable,
   pnl,
   funding,
+  cacChannels,
+  cacNote,
+  sensitivityFactors,
   type Scenario,
 } from '../data/businessPlan'
 import {
@@ -205,6 +208,17 @@ export function Finance() {
           </Panel>
         </Reveal>
 
+        {/* ---- CAC Akquisitionslogik ---- */}
+        <Reveal>
+          <Panel padLg className="finance-unit-econ">
+            <h3>Akquisitionslogik & CAC</h3>
+            <DataTable rows={cacChannels} caption="CAC-Kanäle" />
+            <p style={{ marginTop: 'var(--s-3)', fontSize: '0.875rem', color: 'var(--text-muted)' }}>
+              {cacNote}
+            </p>
+          </Panel>
+        </Reveal>
+
         {/* ---- Finance tables ---- */}
         <div className="finance-tables">
           <Reveal>
@@ -232,6 +246,21 @@ export function Finance() {
             </Panel>
           </Reveal>
         </div>
+
+        {/* ---- Sensitivität & Annahmen ---- */}
+        <Reveal>
+          <Panel padLg style={{ marginTop: 'var(--s-5)' }}>
+            <h3>Annahmen & Szenarien — Jahr-5-Zielszenario</h3>
+            <div className="grid grid--3" style={{ marginTop: 'var(--s-3)' }}>
+              {sensitivityFactors.map((f) => (
+                <div key={f.title}>
+                  <strong style={{ display: 'block', marginBottom: 'var(--s-1)' }}>{f.title}</strong>
+                  <p style={{ fontSize: '0.875rem' }}>{f.body}</p>
+                </div>
+              ))}
+            </div>
+          </Panel>
+        </Reveal>
       </div>
     </section>
   )

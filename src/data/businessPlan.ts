@@ -43,7 +43,7 @@ export type Scenario = {
 export const kpis: Stat[] = [
   { value: '950.000 €', label: 'Kapitalbedarf bis Ende Monat 24' },
   { value: 'Jahr 4/5', label: 'realistischer operativer Break-even' },
-  { value: '7,4 Mio. €', label: 'Umsatz Jahr 5' },
+  { value: '7,4 Mio. €', label: 'Umsatz-Zielszenario J5' },
   { value: '1,49 Mio. €', label: 'EBITDA Jahr 5' },
 ]
 
@@ -179,7 +179,7 @@ export const compliance: Topic[] = [
 export const financeKpis: Stat[] = [
   { value: '2.500', label: 'registrierte Nutzer Jahr 1' },
   { value: '450.000', label: 'registrierte Nutzer Jahr 5' },
-  { value: '7,4 Mio. €', label: 'Umsatz Jahr 5' },
+  { value: '7,4 Mio. €', label: 'Umsatz-Zielszenario J5' },
   { value: '45', label: 'FTE Jahr 5' },
 ]
 
@@ -314,6 +314,7 @@ export const risks: Table = [
   ['B2B-Vertrieb langsamer', 'hoch', 'kleine Piloten, klare KPI-Reports'],
   ['Plattformabhängigkeit', 'mittel-hoch', 'Web-App, E-Mail/Push und später eigene App'],
   ['Unpassende Produktimpulse', 'hoch', 'Plausibilitätschecks, Tests, Support-Eskalation, keine Renditeversprechen'],
+  ['Hoher Churn / geringe Retention', 'hoch', 'Behavioral-Loops, B2B2C-Stabilisierung, klaren Alltagsnutzen messbar machen'],
 ]
 
 export const team: Topic[] = [
@@ -354,6 +355,66 @@ export const examAnchors: string[] = [
   'Break-even-Korridor Jahr 4/5 statt aggressiver Frühannahmen.',
   'Mehrkanal-Umsatz (B2C, B2B2C, Partner, White-Label) reduziert Risiko.',
   'Risiko-Register mit konkreten Gegenmaßnahmen und Meilensteinen.',
+]
+
+/** Aufgabe 1 · Validierungslogik: Erster strukturierter Testschritt. */
+export const validationPlan: Topic[] = [
+  {
+    title: 'Erster Testschritt',
+    body: '10–15 qualitative Interviews mit der Zielgruppe (18–32, digital affin, DACH). Geplant für M1–2, parallel zur Klickdemo.',
+  },
+  {
+    title: 'Kernfragen',
+    body: 'Würden junge Menschen regelmäßig mit einem Sparcoach interagieren? Welche Daten würden sie freigeben? Welche Sparimpulse wirken nicht bevormundend?',
+  },
+  {
+    title: 'Erfolgsindikatoren',
+    body: 'Wiederkehrende Nutzungsbereitschaft, Offenheit zur Kontodatenfreigabe, Interesse an Premium oder B2B-Zugang.',
+  },
+  {
+    title: 'Größte Hürde',
+    body: 'Vertrauen in Datenfreigabe und wahrgenommener Alltagsnutzen. Dieser Plan ersetzt keine abgeschlossene Marktforschung — er ist der erste strukturierte Schritt.',
+  },
+]
+
+/** Aufgabe 3 · Named Competition: Konkrete Wettbewerber mit Abgrenzung. */
+export const competitionNamed: Table = [
+  ['Anbieter', 'Stärke', 'Warum NestEgg anders positioniert ist'],
+  ['Trade Republic', 'Broker, ETF-Sparpläne, Investmentzugang', 'NestEgg startet vor dem Investment: Sparroutine, Ausgabenverhalten, Coaching'],
+  ['Scalable Capital', 'Broker-/Wealth-Plattform', 'NestEgg ist kein Depotkern, sondern ein Routine- und Coaching-Layer'],
+  ['N26', 'Banking-App und Alltagskonto', 'NestEgg fokussiert Zielbildung, Sparimpulse und späteren Partnerpfad'],
+  ['Budgeting-Apps', 'Ausgabentracking und Übersicht', 'NestEgg verbindet Analyse mit konkreter Sparhandlung und Verhaltensroutine'],
+]
+
+export const competitionDefense =
+  'Broker können einzelne Features kopieren. Die Verteidigung liegt nicht in einem einzelnen Feature, sondern in Positionierung, B2B2C-Vertrieb, Coaching-Fokus, Partnerarchitektur und früher Zielgruppenvalidierung.'
+
+/** Aufgabe 2 · CAC-Kanäle: Warum Blended-CAC 35–55 € plausibel sein soll. */
+export const cacChannels: Table = [
+  ['Kanal', 'Rolle', 'CAC-Logik'],
+  ['Campus-Piloten', 'Erster Zugang zur Zielgruppe über Hochschulen', 'Niedriger CAC durch institutionellen Zugang statt Paid Ads'],
+  ['Referral / Challenges', 'Organische Verbreitung über Sparziele und Fortschritt', 'Niedrig bis mittel — nutzergetriebenes Wachstum'],
+  ['Employer Financial Wellbeing', 'B2B2C-Skalierung über Arbeitgeber', 'CAC teilweise über Vertriebskosten, nicht Paid Social'],
+  ['Paid Social', 'Test- und Retargeting-Kanal', 'Teuer — bewusst nicht Hauptkanal'],
+]
+
+export const cacNote =
+  '450.000 registrierte Nutzer in Jahr 5 sind nicht primär über Paid Ads geplant. Wachstum soll über B2B2C, Campus, Employer und Referral skaliert werden. Der Blended-CAC von 35–55 € ist nur plausibel, wenn dieser Kanal-Mix gelingt.'
+
+/** Aufgabe 4 · Sensitivitätsfaktoren: Treiber und Risiken des Jahr-5-Zielszenarios. */
+export const sensitivityFactors: Topic[] = [
+  {
+    title: 'Kritische Treiber',
+    body: 'Aktive Nutzer, Premium-Conversion, B2B-Aktivierung, Partner-Revenue, Churn. Alle fünf müssen im Zielkorridor liegen.',
+  },
+  {
+    title: 'Churn als Hauptrisiko',
+    body: 'Hoher Churn bei freien Nutzern ist wahrscheinlich. 7,4 Mio. € setzen stabile Aktivierungsraten und funktionierenden B2B2C-Vertrieb voraus.',
+  },
+  {
+    title: 'Szenario-Abhängigkeit',
+    body: 'Das Jahr-5-Zielszenario ist abhängig von erfolgreicher B2B2C-Skalierung. Break-even J4/5 ist bewusst konservativer als ein aggressives Frühphasenszenario.',
+  },
 ]
 
 /** Demo-Chat-Skript (type, text, gespartes Volumen in €). */
