@@ -54,6 +54,19 @@
   border-bottom: 1px solid var(--border);
 }
 
+.nav__progress {
+  position: fixed;
+  top: calc(var(--nav-h) - 2px);
+  left: 0;
+  height: 3px;
+  background: var(--accent);
+  border-radius: 0 var(--r-pill) var(--r-pill) 0;
+  box-shadow: 0 0 8px color-mix(in srgb, var(--accent) 55%, transparent);
+  pointer-events: none;
+  z-index: 60;
+  will-change: width;
+}
+
 .nav__brand {
   flex: 0 0 auto;
   display: flex;

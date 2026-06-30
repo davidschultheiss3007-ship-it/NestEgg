@@ -70,17 +70,15 @@ export function App() {
     return () => window.removeEventListener('keydown', onKey)
   }, [])
 
-  // Jump to hash on first load. Force a non-animated jump ('instant', not the
-  // default which would inherit html { scroll-behavior: smooth } and animate
-  // down through the whole deck), and re-run once web fonts swap in case the
-  // late reflow shifts section offsets.
+  // On every (re)load start at the very top — never restore the last-viewed
+  // section. Disable the browser's own scroll restoration and strip any hash
+  // that in-session navigation left in the URL, then force a non-animated jump
+  // to the top ('instant', so it doesn't inherit html { scroll-behavior:
+  // smooth } and animate up through the whole deck).
   useEffect(() => {
-    const id = location.hash.slice(1)
-    if (!id || !SECTION_IDS.includes(id)) return
-    const jump = () =>
-      document.getElementById(id)?.scrollIntoView({ behavior: 'instant', block: 'start' })
-    requestAnimationFrame(jump)
-    document.fonts?.ready.then(jump)
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual'
+    if (location.hash) history.replaceState(null, '', location.pathname + location.search)
+    window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior })
   }, [])
 
   return (

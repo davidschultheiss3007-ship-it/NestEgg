@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { SECTIONS } from '../data/sections'
 import { usePrefersReducedMotion } from '../lib/hooks'
 import { Logo } from './Logo'
@@ -14,6 +14,31 @@ type NavProps = {
 export function Nav({ activeId, onNavigate, onOpenPalette, onPresent }: NavProps) {
   const scrollerRef = useRef<HTMLDivElement>(null)
   const reducedMotion = usePrefersReducedMotion()
+
+  // Continuous reading progress driven by the real scroll position, so the
+  // bar grows pixel-by-pixel instead of jumping section-by-section.
+  const [progress, setProgress] = useState(0)
+  useEffect(() => {
+    let raf = 0
+    const measure = () => {
+      raf = 0
+      const doc = document.documentElement
+      const max = doc.scrollHeight - window.innerHeight
+      const pct = max > 0 ? (window.scrollY / max) * 100 : 0
+      setProgress(Math.min(100, Math.max(0, pct)))
+    }
+    const onScroll = () => {
+      if (!raf) raf = requestAnimationFrame(measure)
+    }
+    measure()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('resize', onScroll)
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', onScroll)
+      if (raf) cancelAnimationFrame(raf)
+    }
+  }, [])
 
   // Keep the active link in view within the horizontal scroller.
   useEffect(() => {
@@ -40,6 +65,16 @@ export function Nav({ activeId, onNavigate, onOpenPalette, onPresent }: NavProps
   }, [])
 
   return (
+    <>
+      <div
+        className="nav__progress"
+        role="progressbar"
+        aria-label="Lesefortschritt"
+        aria-valuenow={Math.round(progress)}
+        aria-valuemin={0}
+        aria-valuemax={100}
+        style={{ width: `${progress}%` }}
+      />
     <header className="nav">
       <button className="nav__brand" onClick={() => onNavigate('cover')} aria-label="Zum Anfang">
         <Logo small />
@@ -75,5 +110,6 @@ export function Nav({ activeId, onNavigate, onOpenPalette, onPresent }: NavProps
         <ThemeToggle />
       </div>
     </header>
+    </>
   )
 }
