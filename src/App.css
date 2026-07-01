@@ -22,20 +22,20 @@
   font-size: 1.1rem;
 }
 
+.logo__egg {
+  color: var(--accent);
+}
+
 .logo__mark {
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   display: grid;
   place-items: center;
-  color: var(--accent);
-  border-radius: 10px;
-  background: var(--accent-weak);
-  padding: 5px;
 }
 
 .logo--small .logo__mark {
-  width: 28px;
-  height: 28px;
+  width: 32px;
+  height: 32px;
 }
 
 /* ----------------------------- Nav ----------------------------- */
