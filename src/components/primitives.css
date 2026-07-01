@@ -405,6 +405,12 @@ td[data-align='right'][data-neg] {
    scroll runs several at once, dropping frames. Opacity + transform are the
    canonical jank-free reveal and the settled state is pixel-identical. */
 .reveal {
+  /* Reveal sits as a direct child of many CSS Grid layouts (.split,
+     .compare-grid, etc). Grid items default to min-width: auto, which lets
+     wide content (a finance table's min-content) blow out the whole track
+     instead of shrinking to it and scrolling internally. min-width: 0 is a
+     no-op outside grid/flex contexts, so this is safe everywhere. */
+  min-width: 0;
   opacity: 0;
   transform: translateY(14px);
   transition: opacity 380ms var(--ease-out), transform 380ms var(--ease-out);
